@@ -9,10 +9,14 @@ import java.util.List;
 public class Group {
     @Id
     private String id;
-    private String name;
-    private List<String> members;
+    private String groupName;
+    private List<String> memberIds;
 
     public Group() {
+    }
+    public Group(String groupName, List<String> memberIds) {
+        this.groupName = groupName;
+        this.memberIds = memberIds;
     }
 
     public String getId() {
@@ -23,20 +27,19 @@ public class Group {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getGroupName() {
+        return groupName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
     }
 
-    public List<String> getMembers() {
-        return members;
+    public List<String> getMemberIds() {
+        return memberIds;
     }
 
-    public void setMembers(List<String> members) {
-        this.members = members;
+    public void setMemberIds(List<String> memberIds) {
+        this.memberIds = memberIds;
     }
-
 }

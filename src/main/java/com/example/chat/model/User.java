@@ -10,11 +10,17 @@ public class User {
     @Id
     private String id;
     private String username;
-    private boolean online;
-    private LocalDateTime lastseen;
+    private boolean isOnline;
+    private long lastSeen;
 
     public User() {
     }
+    public User(String username, boolean isOnline, long lastSeen) {
+        this.username = username;
+        this.isOnline = isOnline;
+        this.lastSeen = lastSeen;
+    }
+
 
 
     public String getId() {
@@ -34,18 +40,20 @@ public class User {
     }
 
     public boolean isOnline() {
-        return online;
+        return isOnline;
     }
 
     public void setOnline(boolean online) {
-        this.online = online;
+        isOnline = online;
     }
 
-    public LocalDateTime getLastseen() {
-        return lastseen;
+    public long getLastSeen() {
+        return lastSeen;
     }
 
-    public void setLastseen(LocalDateTime lastseen) {
-        this.lastseen = lastseen;
+    public void setLastSeen(long lastSeen) {
+        this.lastSeen = lastSeen;
     }
 }
+
+

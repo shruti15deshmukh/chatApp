@@ -13,10 +13,17 @@ public class Message {
     private String receiverId; // Null for group messages
     private String groupId;    // Null for one-to-one messages
     private String content;
-    private LocalDateTime timestamp;
+    private long timestamp;
     private String status;
 
     public Message() {
+    }
+    public Message(String senderId, String receiverId, String groupId, String content, long timestamp) {
+        this.senderId = senderId;
+        this.receiverId = receiverId;
+        this.groupId = groupId;
+        this.content = content;
+        this.timestamp = timestamp;
     }
 
     public String getId() {
@@ -59,11 +66,11 @@ public class Message {
         this.content = content;
     }
 
-    public LocalDateTime getTimestamp() {
+    public long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(LocalDateTime timestamp) {
+    public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
 
