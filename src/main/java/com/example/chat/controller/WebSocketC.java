@@ -17,10 +17,15 @@ public class WebSocketC {
 
 
 
+//    @MessageMapping("/send")
+//    @SendTo("/topic/messages")
+//    public Message sendMessage(Message message) {
+//        return message;
+//    }
     @MessageMapping("/send")
     @SendTo("/topic/messages")
-    public Message sendMessage(Message message) {
-        return message;
+    public Message sendMessage(@Payload Message message) {
+        return message; // Real-time broadcast
     }
     @MessageMapping("/typing")  // Endpoint for receiving typing events
     public void handleTypingIndicator(@Payload TypingIndicator typingIndicator) {

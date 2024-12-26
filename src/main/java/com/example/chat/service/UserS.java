@@ -11,12 +11,37 @@ import java.util.Optional;
 public class UserS {
     @Autowired
     private UserR userR;
+    @Autowired
+    public UserS(UserR userR) {
+        this.userR = userR;
+    }
+    public User registerUser(String username, String password, String email) {
+        // Perform any necessary validation before saving
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setEmail(email);
+        user.setLastSeen(System.currentTimeMillis()); // Set the default lastSeen
+        user.setOnline(false); // Set the user status as offline initially
+
+        return userR.save(user); // Save the user to MongoDB
+    }
+//    public User registerUser(String username, String password, String email) {
+//        // Check if user already exists
+//        if (userR.findByUsername(username).isPresent()) {
+//            throw new RuntimeException("User already exists");
+//        }
+//
+//        // Create new user
+//        User newUser = new User(username, password, email);
+//        return userR.save(newUser);
+//    }
     public User getUserById(String userId) {
         Optional<User> userOptional = userR.findById(userId);
         return userOptional.orElseThrow(() -> new RuntimeException("User not found"));
     }
 
-    public User getUserByUsername(String username) {
+    public Optional<User> getUserByUsername(String username) {
         return userR.findByUsername(username);
     }
 
