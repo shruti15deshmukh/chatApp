@@ -51,9 +51,9 @@ public class ChatC {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedUser); // Return 201 if successful
     }
 
-    @GetMapping("/chat/history/{userId}")
+    @GetMapping("/history/{userId}")
     public List<Message> getChatHistory(@PathVariable String userId) {
-        return messageR.findBySenderIdOrReceiverId(userId, userId);
+        return messageR.findBySenderId(userId);
     }
 
 
