@@ -14,9 +14,7 @@ public class CorsConfig {
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedOrigins(Arrays.asList(
-                "http://frontend1.com",
-                "http://frontend2.com",
-                "http://frontend3.com"
+                "http://localhost:5173"
         ));
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
