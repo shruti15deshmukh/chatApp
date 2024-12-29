@@ -9,4 +9,5 @@ import java.util.Optional;
 @Repository
 public interface GroupR extends MongoRepository<Group, String> {
     Optional<Group> findById(String groupName);
+    List<Group> findAll();
 }
