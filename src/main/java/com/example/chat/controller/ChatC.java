@@ -32,6 +32,8 @@ public class ChatC {
     @Autowired
     private GroupS groupS;
     @Autowired
+    private GroupR groupR;
+    @Autowired
     private MessageR messageR;
     @Autowired
     private UserR userR;
@@ -49,6 +51,15 @@ public class ChatC {
         }
 
         return ResponseEntity.status(HttpStatus.CREATED).body(savedUser); // Return 201 if successful
+    }
+    @GetMapping("/one")
+    public List<User> getOneList(){
+        return userR.findAll();
+    }
+
+    @GetMapping("/grp")
+    public List<Group> getGrpList(){
+        return groupR.findAll();
     }
 
     @GetMapping("/history/{userId}")
