@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class WebSocketC {
     @Autowired
     private SimpMessagingTemplate messagingTemplate;
+    @Autowired
+    private MessageR messageR;
 
 
 
@@ -25,7 +27,11 @@ public class WebSocketC {
     @MessageMapping("/send")
     @SendTo("/topic/messages")
     public Message sendMessage(@Payload Message message) {
-        return message; // Real-time broadcast
+        
+        Message savedMessage = messageR.save(message); // Save the message
+//        messagingTemplate.convertAndSend("/topic/messages", savedMessage);
+
+        return savedMessage;
     }
     @MessageMapping("/typing")  // Endpoint for receiving typing events
     public void handleTypingIndicator(@Payload TypingIndicator typingIndicator) {
