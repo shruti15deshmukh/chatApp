@@ -18,6 +18,6 @@ public class WebSocketTypingconfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/ws").setAllowedOriginPatterns("*").withSockJS();
-    }
+        registry.addEndpoint("/ws").setAllowedOriginPatterns("http://localhost:*").withSockJS();
+        registry.addEndpoint("/ws").setAllowedOriginPatterns("http://localhost:*");    }
 }
